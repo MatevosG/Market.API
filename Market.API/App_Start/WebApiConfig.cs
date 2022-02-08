@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
 namespace Market.API
 {
@@ -12,6 +9,7 @@ namespace Market.API
             // Web API configuration and services
 
             // Web API routes
+
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -21,5 +19,4 @@ namespace Market.API
             );
         }
     }
-    // test git
 }

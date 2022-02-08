@@ -42,5 +42,4 @@ namespace Market.API.Controllers
             return Ok();
         }
     }
-    // test git stage
 }

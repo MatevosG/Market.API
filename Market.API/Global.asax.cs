@@ -1,14 +1,5 @@
-using Autofac;
-using Autofac.Integration.WebApi;
-using Market.BL.Contracts;
-using Market.BL.Sevices;
-using Market.Common.Contract;
-using Market.Common.Helpers;
-using Market.DAL.Contracts;
-using Market.DAL.Repositories;
-using System.Reflection;
 using System.Web.Http;
-
+using Unity.WebApi;
 
 namespace Market.API
 {
@@ -17,33 +8,36 @@ namespace Market.API
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            var builder = new ContainerBuilder();
+            #region New Unity Dependecy logic 
+            GlobalConfiguration.Configuration.DependencyResolver  = new UnityDependencyResolver(UnityConfig.RegisterComponents());
+            #endregion
 
-            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
+            #region Old Autofac dependency logic
+            //var builder = new ContainerBuilder();
 
-            builder.RegisterType<CategoryService>().As<ICategoryService>();
-            builder.RegisterType<SellService>().As<ISellService>();
-            builder.RegisterType<ReportService>().As<IReportService>();
-            builder.RegisterType<ProductService>().As<IProductService>();
-            builder.RegisterType<SimpleLogger>().As<ILogger>();
-            builder.RegisterType<TransactionRepository>().As<ITransactinRepository>();
-            builder.RegisterType<ProductRepository>().As<IProductRepository>(); 
-            builder.RegisterType<TransactionItemRepository>().As<ITransactionItemRepository>(); 
-            builder.RegisterType<UserRepository>().As<IUserRepository>(); 
-            builder.RegisterType<UserService>().As<IUserService>(); 
-            builder.RegisterType<TokenRepository>().As<ITokenRepository>();
-            builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
+            //builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
-            builder.RegisterType<AuthorizationService>().As<IAuthorizationService>();
+            //builder.RegisterType<CategoryService>().As<ICategoryService>();
+            //builder.RegisterType<SellService>().As<ISellService>();
+            //builder.RegisterType<ReportService>().As<IReportService>();
+            //builder.RegisterType<ProductService>().As<IProductService>();
+            //builder.RegisterType<SimpleLogger>().As<ILogger>();
+            //builder.RegisterType<TransactionRepository>().As<ITransactinRepository>();
+            //builder.RegisterType<ProductRepository>().As<IProductRepository>(); 
+            //builder.RegisterType<TransactionItemRepository>().As<ITransactionItemRepository>(); 
+            //builder.RegisterType<UserRepository>().As<IUserRepository>(); 
+            //builder.RegisterType<UserService>().As<IUserService>(); 
+            //builder.RegisterType<TokenRepository>().As<ITokenRepository>();
+            //builder.RegisterType<CategoryRepository>().As<ICategoryRepository>();
 
+            //builder.RegisterType<AuthorizationService>().As<IAuthorizationService>();
 
+            //var continer = builder.Build();
 
+            //var resolver = new AutofacWebApiDependencyResolver(continer);
 
-            var continer = builder.Build();
-
-            var resolver = new AutofacWebApiDependencyResolver(continer);
-
-            GlobalConfiguration.Configuration.DependencyResolver = resolver;
+            //GlobalConfiguration.Configuration.DependencyResolver = resolver;
+            #endregion
         }
     }
 }
