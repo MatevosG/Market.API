@@ -31,14 +31,12 @@ namespace Market.API.Controllers
         {
             try
             {
-                int a = 7;
-                int b = a / 0;
                 return Ok(_categoryService.GetCategory(id));
             }
             catch (Exception ex)
             {
                  _loger.LogError(ex);
-                return BadRequest("lav ban chi exel");
+                return BadRequest();
             }
         }
 
@@ -54,7 +52,7 @@ namespace Market.API.Controllers
             catch (Exception ex)
             {
                 _loger.LogError(ex);
-                return BadRequest("lav ban chi exel");
+                return BadRequest();
             }
         }
 
@@ -70,7 +68,7 @@ namespace Market.API.Controllers
             catch (Exception ex)
             {
                 _loger.LogError(ex);
-                return BadRequest("lav ban chi exel");
+                return BadRequest();
             }
         }
     }

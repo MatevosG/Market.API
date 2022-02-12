@@ -32,7 +32,7 @@ namespace Market.API.Controllers
             catch (Exception ex)
             {
                 _loger.LogError(ex);
-                return BadRequest("lav ban chi exel");
+                return BadRequest();
             }
         }
         [HttpPost]
@@ -47,7 +47,7 @@ namespace Market.API.Controllers
             catch (Exception ex)
             {
                 _loger.LogError(ex);
-                return BadRequest("lav ban chi exel");
+                return BadRequest();
             }
         }
     }
