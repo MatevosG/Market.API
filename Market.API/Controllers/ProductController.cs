@@ -13,7 +13,7 @@ namespace Market.API.Controllers
         /// Teste
         private IProductService _productService;
         private ILogger _loger;
-
+        int a = 65;
         public ProductController(IProductService productService, ILogger logger)
         {
             _productService = productService;
