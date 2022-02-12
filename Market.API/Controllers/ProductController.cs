@@ -10,6 +10,7 @@ namespace Market.API.Controllers
 {
     public class ProductController : ApiController
     {
+        /// Teste
         private IProductService _productService;
         private ILogger _loger;
 
