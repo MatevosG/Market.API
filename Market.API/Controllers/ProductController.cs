@@ -3,7 +3,6 @@ using Market.BL.Contracts;
 using Market.Common.Contract;
 using Market.DAL.Entities;
 using System;
-using System.Collections.Generic;
 using System.Web.Http;
 
 namespace Market.API.Controllers

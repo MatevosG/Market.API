@@ -1,0 +1,2 @@
+1 ) Enable-Migrations -ProjectName Market.DAL -StartUpProjectName Market.API -Verbose
+    add-Migration -ProjectName Market.DAL -StartUpProjectName Market.API -Verbose
