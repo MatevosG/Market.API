@@ -163,6 +163,22 @@
     <Compile Include="Migrations\202202071403024_UserAndToken.designer.cs">
       <DependentUpon>202202071403024_UserAndToken.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202202160914123_EntitiesChanged.cs" />
+    <Compile Include="Migrations\202202160914123_EntitiesChanged.designer.cs">
+      <DependentUpon>202202160914123_EntitiesChanged.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202160920166_ChangedUserPassword.cs" />
+    <Compile Include="Migrations\202202160920166_ChangedUserPassword.designer.cs">
+      <DependentUpon>202202160920166_ChangedUserPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202160925185_ChangedUserPasswordForNumber.cs" />
+    <Compile Include="Migrations\202202160925185_ChangedUserPasswordForNumber.designer.cs">
+      <DependentUpon>202202160925185_ChangedUserPasswordForNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202202161021479_Changed.cs" />
+    <Compile Include="Migrations\202202161021479_Changed.designer.cs">
+      <DependentUpon>202202161021479_Changed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\OparationModel.cs" />
     <Compile Include="Models\ProductCategoryModel.cs" />
@@ -199,6 +215,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202071403024_UserAndToken.resx">
       <DependentUpon>202202071403024_UserAndToken.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202160914123_EntitiesChanged.resx">
+      <DependentUpon>202202160914123_EntitiesChanged.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202160920166_ChangedUserPassword.resx">
+      <DependentUpon>202202160920166_ChangedUserPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202160925185_ChangedUserPasswordForNumber.resx">
+      <DependentUpon>202202160925185_ChangedUserPasswordForNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202202161021479_Changed.resx">
+      <DependentUpon>202202161021479_Changed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,7 @@
 ﻿using Market.API.Filters;
 using Market.BL.Contracts;
 using Market.Common.Contract;
+using Market.Common.Exceptions;
 using Market.DAL.Entities;
 using System;
 using System.Web.Http;
@@ -20,7 +21,8 @@ namespace Market.API.Controllers
         [Route("User/GetAllUsers")]
         public IHttpActionResult GetAllUsers()
         {
-             var users =  _userService.GetAllUsers();
+            throw new EntityNotValidException("Entity is not valid");
+            var users =  _userService.GetAllUsers();
             return Ok(users);
         }
 
@@ -28,9 +30,14 @@ namespace Market.API.Controllers
         [Route("User/GetUserById/{id}")]
         public IHttpActionResult GetUserById(int id)
         {
+            var user = _userService.GetUserById(id);
+            if (user == null)
+            {
+                throw new NotFoundByIdException("user by that id not found");
+            }
             try
             {
-                return Ok(_userService.GetUserById(id));
+                return Ok(user);
             }
             catch (Exception ex)
             {

@@ -27,7 +27,7 @@ namespace Market.API.Controllers
         {
             var userLogin = _authorizationService.TryGetUser(user);
             if (user == null)
-                return NotFound();
+                return Unauthorized();
             var token = _authorizationService.CreateToken(user);
             if (token == null)
                 return NotFound();

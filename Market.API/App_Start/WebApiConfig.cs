@@ -1,4 +1,7 @@
-﻿using System.Web.Http;
+﻿using Market.API.Filters;
+using Market.Common.Contract;
+using Market.Common.Helpers;
+using System.Web.Http;
 
 namespace Market.API
 {
@@ -6,6 +9,7 @@ namespace Market.API
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Filters.Add(new GlobalExceptionFilter(new SimpleLogger() ));
             // Web API configuration and services
 
             // Web API routes
@@ -16,6 +20,7 @@ namespace Market.API
                 name: "DefaultApi",
                 routeTemplate: "{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
+
             );
         }
     }

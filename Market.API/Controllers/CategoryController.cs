@@ -1,6 +1,7 @@
 ﻿using Market.API.Filters;
 using Market.BL.Contracts;
 using Market.Common.Contract;
+using Market.Common.Exceptions;
 using Market.Common.Helpers;
 using Market.DAL.Entities;
 using System;
@@ -11,13 +12,13 @@ namespace Market.API.Controllers
     public class CategoryController : ApiController
     {
         private ICategoryService _categoryService;
-        private ILogger _loger ;
+        private ILogger _loger;
         public CategoryController(ICategoryService inventaryService, ILogger logger)
         {
             _categoryService = inventaryService;
             _loger = logger;
         }
-        
+
         [HttpGet]
         [Route("Category/GetCategories")]
         public IHttpActionResult GetCategories()
@@ -29,13 +30,19 @@ namespace Market.API.Controllers
         [Route("Category/GetCategoryById/{id}")]
         public IHttpActionResult GetCategoryById(int id)
         {
+            var category = _categoryService.GetCategory(id);
+            if (category==null)
+            {
+                throw new NotFoundByIdException("category by that id not found");
+            }
             try
             {
-                return Ok(_categoryService.GetCategory(id));
+               
+                return Ok(category);
             }
             catch (Exception ex)
             {
-                 _loger.LogError(ex);
+                _loger.LogError(ex);
                 return BadRequest();
             }
         }
@@ -43,7 +50,7 @@ namespace Market.API.Controllers
         [HttpPost]
         [ModelValidator]
         [Route("Category/CreateCategory")]
-        public IHttpActionResult CreateCategory([FromBody]Category category)
+        public IHttpActionResult CreateCategory([FromBody] Category category)
         {
             try
             {
@@ -61,6 +68,8 @@ namespace Market.API.Controllers
         [Route("Category/UpdateCategory")]
         public IHttpActionResult UpdateCategory([FromBody] Category category)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
             try
             {
                 return Ok(_categoryService.UpdateCategory(category));

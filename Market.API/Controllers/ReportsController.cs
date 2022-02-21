@@ -1,7 +1,6 @@
 ﻿using Market.API.Filters;
 using Market.BL.Contracts;
 using Market.Common.Contract;
-using Market.Common.Helpers;
 using Market.DAL.Models;
 using System;
 using System.Web.Http;

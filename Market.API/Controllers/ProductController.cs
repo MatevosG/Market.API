@@ -1,6 +1,7 @@
 ﻿using Market.API.Filters;
 using Market.BL.Contracts;
 using Market.Common.Contract;
+using Market.Common.Exceptions;
 using Market.DAL.Entities;
 using System;
 using System.Web.Http;
@@ -28,10 +29,14 @@ namespace Market.API.Controllers
         [Route("Product/GetProductById/{id}")]
         public IHttpActionResult Get(int id)
         {
+            _loger.LogInfo($"GetProductById started with parameter id ={id}");
+            var product = _productService.GetProductById(id);
+            if (product == null)
+            {
+                throw new NotFoundByIdException("product by that id not found");
+            }
             try
             {
-                _loger.LogInfo($"GetProductById started with parameter id ={id}");
-                var product = _productService.GetProductById(id);
                 return Ok(product);
             }
             catch (Exception ex)
@@ -93,9 +98,14 @@ namespace Market.API.Controllers
         [Route("Product/GetProductsByCategory/{id}")]
         public IHttpActionResult GetProductsByCategory(int id)
         {
+            var product = _productService.GetProductsByCategory(id);
+            if (product == null)
+            {
+                throw new NotFoundByIdException("product by that id not found");
+            }
             try
             {
-                return Ok(_productService.GetProductsByCategory(id));
+                return Ok(product);
             }
             catch (Exception ex)
             {
