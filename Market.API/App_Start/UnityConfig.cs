@@ -1,12 +1,11 @@
 using Market.BL.Contracts;
 using Market.BL.Sevices;
 using Market.Common.Contract;
+using Market.Common.Health;
 using Market.Common.Helpers;
 using Market.DAL.Contracts;
 using Market.DAL.Repositories;
-using System.Web.Http;
 using Unity;
-using Unity.WebApi;
 
 namespace Market.API
 {
@@ -22,7 +21,9 @@ namespace Market.API
             container.RegisterType<IUserService, UserService>();
             container.RegisterType<ICategoryService, CategoryService>();
             container.RegisterType<ISellService, SellService>();
-            container.RegisterType<IReportService, ReportService>();
+            container.RegisterType<IReportService, ReportService>(); 
+            container.RegisterType<IHealthCheckProvider, DbHealthCheckProvider>(); 
+
 
             container.RegisterType<IProductRepository, ProductRepository>();
             container.RegisterType<ITransactinRepository, TransactionRepository>();

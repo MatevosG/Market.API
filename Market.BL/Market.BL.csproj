@@ -78,6 +78,7 @@
     <Compile Include="Contracts\IReportService.cs" />
     <Compile Include="Contracts\ISellService.cs" />
     <Compile Include="Contracts\IUserService.cs" />
+    <Compile Include="Health\DbHealthCheckProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sevices\AuthorizationService.cs" />
     <Compile Include="Sevices\CategoryService.cs" />
@@ -91,6 +92,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Market.Common\Market.Common.csproj">
+      <Project>{3177a617-4172-4b05-a4a4-5d997f35c48e}</Project>
+      <Name>Market.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Market.DAL\Market.DAL.csproj">
       <Project>{feeeacf8-9041-4d15-bf78-749cd20e3ee9}</Project>
       <Name>Market.DAL</Name>

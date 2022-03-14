@@ -42,9 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\Constants.cs" />
     <Compile Include="Contract\ILogger.cs" />
     <Compile Include="Exceptions\EntityNotValidException.cs" />
     <Compile Include="Exceptions\NotFoundByIdException.cs" />
+    <Compile Include="Health\HealthCheckResult.cs" />
+    <Compile Include="Health\IHealthCheckProvider.cs" />
     <Compile Include="Helpers\SimpleLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
